@@ -9,8 +9,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  Map data = {};
+
   @override
   Widget build(BuildContext context) {
+
+    data = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
@@ -19,18 +24,44 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Column(
-        children: <Widget> [
-          FlatButton.icon(
-            onPressed: () {
-              Navigator.pushNamed(context, '/Location');
-            },
-            icon: Icon(Icons.edit_location),
-            label: Text('Edit location'),
-          ),
-        ],
-      )
-
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 130, 0, 0),
+        child: Column(
+          children: <Widget> [
+            Container(
+              padding: EdgeInsets.fromLTRB(30, 120, 0, 0),
+              child: FlatButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Location');
+                },
+                icon: Icon(Icons.edit_location),
+                label: Text('Edit location'),
+              ),
+            ),
+            SizedBox(height: 20,),
+              Container(
+                padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                  child: Text(
+                    data['location'],
+                    style: TextStyle(
+                      fontSize: 18,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  padding: EdgeInsets.fromLTRB(120, 0, 0, 0),
+                  child: Text(
+                    data['time'],
+                    style: TextStyle(
+                      fontSize: 66,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+        ),
       );
   }
 }
