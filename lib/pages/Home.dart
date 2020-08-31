@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text('World Time App'),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue[1000],
         centerTitle: true,
         elevation: 0,
       ),
@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  padding: EdgeInsets.fromLTRB(120, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(100, 0, 0, 0),
                   child: Text(
                     data['time'],
                     style: TextStyle(

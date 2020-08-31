@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:world_time_app/pages/World_Time.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -29,18 +28,21 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      //backgroundColor: Colors.blue[900],
       appBar: AppBar(
         title: Text('Loading page'),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue[1000],
         centerTitle: true,
       ),
       body: Center(
-        child: Container(
-          child: Text('Loading...',
-          style: TextStyle(
-            fontWeight: FontWeight.bold
-          ),),
+        child: SpinKitFadingCircle(
+          itemBuilder: (BuildContext context, int index) {
+            return DecoratedBox(
+              decoration: BoxDecoration(
+                color: index.isEven ? Colors.red : Colors.green,
+              ),
+            );
+          },
         ),
       ),
     );
